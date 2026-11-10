@@ -14,16 +14,8 @@ namespace NoSlipOnRoof.Patches;
 [HarmonyPatch(typeof(Character), "ApplySlide")]
 internal static class Character_ApplySlide_Patch
 {
-    /// <summary>Vanilla's "standing still" threshold for movement input (see <c>UpdateBodyFriction</c>).</summary>
-    private const float IdleMoveThreshold = 0.1f;
-
     [HarmonyPrefix]
-    private static bool Prefix(
-        Character __instance,
-        ref Vector3 currentVel,
-        Collider ___m_lastGroundCollider,
-        Vector3 ___m_moveDir,
-        ref float ___m_slippage)
+    private static bool Prefix(Character __instance, Collider ___m_lastGroundCollider, ref float ___m_slippage)
     {
         if (__instance is not Player || !RoofCheck.IsRoof(___m_lastGroundCollider))
         {
@@ -32,15 +24,6 @@ internal static class Character_ApplySlide_Patch
 
         // What vanilla does on shallow ground. This also gives the player their normal friction back.
         ___m_slippage = 0f;
-
-        // Standing-still friction (0.8) only holds up to about 38 degrees, so on the steepest pieces gravity
-        // still creeps the player down. Cancel any downward velocity while there's no movement input; jumping
-        // (upward) and walking are left alone.
-        if (___m_moveDir.magnitude < IdleMoveThreshold && currentVel.y < 0f)
-        {
-            currentVel.y = 0f;
-        }
-
         return false;
     }
 }
