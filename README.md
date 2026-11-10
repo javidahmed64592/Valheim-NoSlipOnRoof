@@ -6,6 +6,8 @@
 
 Stop sliding off steep roofs.
 
+![Standing on Roof](https://github.com/javidahmed64592/Valheim-NoSlipOnRoof/raw/main/images/game_screenshot_1.png)
+
 In vanilla you slide down anything steeper than 38 degrees, so you can stand on a 26 degree roof but slip off 45 and 67 degree ones while building.
 With this mod you keep your footing on every roof piece, whatever its angle, and can walk up and down it.
 
