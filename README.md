@@ -9,7 +9,7 @@ Stop sliding off steep roofs.
 In vanilla you slide down anything steeper than 38 degrees, so you can stand on a 26 degree roof but slip off 45 and 67 degree ones while building.
 With this mod you keep your footing on every roof piece, whatever its angle, and can walk up and down it.
 
-_Note: On 67 degree roofs, you will slowly slip down while standing still over the course of several minutes due to its steepness, but this should only be a problem if you are AFK on a roof._
+When you stop on a roof you stay where you are, even on the steepest 67 degree pieces, the same way the game holds you in place on a ship.
 
 ## Configuration
 
