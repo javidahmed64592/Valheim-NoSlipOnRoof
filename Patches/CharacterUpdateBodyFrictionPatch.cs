@@ -17,7 +17,7 @@ namespace NoSlipOnRoof.Patches;
 internal static class Character_UpdateBodyFriction_Patch
 {
     /// <summary>Holds slopes up to about 80 degrees, steeper than any vanilla roof.</summary>
-    private const float HoldFriction = 6f;
+    private const float HoldFriction = 7f;
 
     /// <summary>Vanilla's "standing still" threshold for movement input in <c>UpdateBodyFriction</c>.</summary>
     private const float IdleMoveThreshold = 0.1f;
