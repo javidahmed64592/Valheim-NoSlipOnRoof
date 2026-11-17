@@ -5,10 +5,15 @@ using UnityEngine;
 namespace NoSlipOnRoof.Roofs;
 
 /// <summary>
-/// Tells whether a collider belongs to a built roof piece. Every vanilla roof has "roof" in its prefab name
+/// Tells whether a collider belongs to a roof. Every vanilla roof piece has "roof" in its prefab name
 /// (<c>wood_roof_45</c>, <c>scale_wall_roof_67</c>, <c>piece_grausten_roof_45</c>) or in its name token
 /// (<c>$piece_ashwoodwallrooftop67</c> on <c>ashwood_wall_cross_67</c>), so both are checked. That also
 /// covers most modded roofs.
+/// Roofs that come with the world aren't pieces: the fuling huts and towers use <c>goblin_roof_45d</c>,
+/// <c>goblin_roof_45d_corner</c> and <c>goblin_roof_cap</c>, and the Ashlands ruins <c>Ashlands_ArchRoof</c>,
+/// which only have a ZNetView and WearNTear or Destructible. For those the networked object's prefab name is
+/// checked. The "roof" tag isn't used: vanilla puts it on anything that keeps the rain off, like stone
+/// floors, walls and crafting station extensions.
 /// </summary>
 internal static class RoofCheck
 {
@@ -37,8 +42,13 @@ internal static class RoofCheck
     private static bool Check(Collider collider)
     {
         Piece piece = collider.GetComponentInParent<Piece>();
-        return piece != null
-            && (Mentions(Utils.GetPrefabName(piece.gameObject)) || Mentions(piece.m_name));
+        if (piece != null)
+        {
+            return Mentions(Utils.GetPrefabName(piece.gameObject)) || Mentions(piece.m_name);
+        }
+
+        ZNetView worldObject = collider.GetComponentInParent<ZNetView>();
+        return worldObject != null && Mentions(Utils.GetPrefabName(worldObject.gameObject));
     }
 
     private static bool Mentions(string name)
