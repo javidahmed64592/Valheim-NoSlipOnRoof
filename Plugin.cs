@@ -13,7 +13,7 @@ public class NoSlipOnRoofPlugin : BaseUnityPlugin
 {
     public const string PluginGUID = "javidahmed64592.nosliponroof";
     public const string PluginName = "No Slip On Roof";
-    public const string PluginVersion = "0.1.0";
+    public const string PluginVersion = "1.0.0";
 
     private Harmony _harmony;
 

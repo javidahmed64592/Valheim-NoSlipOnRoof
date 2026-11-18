@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.0.0
 
-- You also keep your footing on roofs that are already in the world, like the steep roofs of fuling huts and towers and the Ashlands ruins' arched roofs. Before, only roofs built by players counted.
+- First stable release.
+- You now also keep your footing on roofs that are already in the world: the steep roofs of fuling huts and towers, and the arched roofs of the Ashlands ruins. Before, only roofs built by players counted.
 
 ## 0.1.0
 
