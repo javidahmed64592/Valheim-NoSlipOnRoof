@@ -42,9 +42,9 @@ internal static class SafePatcher
     private static readonly Dictionary<Type, string> Owners = [];
 
     /// <summary>The patch classes of each feature.</summary>
-    private static readonly Dictionary<string, List<Type>> Features = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<string, List<Type>> Features = [];
 
-    private static readonly HashSet<string> Off = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly HashSet<string> Off = [];
 
     /// <summary>Methods whose IL has been read, and the methods of this mod each one calls.</summary>
     private static readonly Dictionary<MethodBase, List<MethodBase>> Callees = [];
@@ -141,7 +141,7 @@ internal static class SafePatcher
 
     private static HashSet<string> ReadDisabledFeatures(ConfigFile config)
     {
-        HashSet<string> disabled = new(StringComparer.OrdinalIgnoreCase);
+        HashSet<string> disabled = [];
         if (Features.Count == 0)
         {
             return disabled;
@@ -160,9 +160,12 @@ internal static class SafePatcher
                 continue;
             }
 
-            if (Features.ContainsKey(name))
+            // Typed by hand, so the case doesn't have to match.
+            string feature = Features.Keys.FirstOrDefault(key =>
+                string.Equals(key, name, StringComparison.OrdinalIgnoreCase));
+            if (feature != null)
             {
-                _ = disabled.Add(name);
+                _ = disabled.Add(feature);
             }
             else
             {
@@ -431,7 +434,7 @@ internal static class SafePatcher
     /// </summary>
     private static HashSet<string> FindOwners(Exception exception, MethodBase original, out bool core)
     {
-        HashSet<string> owners = new(StringComparer.OrdinalIgnoreCase);
+        HashSet<string> owners = [];
         core = false;
         bool ours = false;
 
