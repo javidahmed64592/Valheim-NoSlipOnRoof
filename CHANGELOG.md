@@ -4,6 +4,7 @@
 
 - If a game update breaks part of the mod, only that part turns off and the rest keeps working: if holding you still on a roof stops working, you still won't slide off. The log says which part is off, in one line. If the part that stops you sliding breaks, the whole mod turns off cleanly instead of throwing errors.
 - New `DisabledFeatures` setting under `[Debug]`, for testing: turns parts of the mod off by name.
+- Updated Jotunn to 2.30.3.
 
 ## 1.0.0
 
