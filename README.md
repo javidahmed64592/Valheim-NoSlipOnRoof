@@ -16,11 +16,13 @@ When you stop on a roof you stay where you are, even on the steepest 67 degree p
 
 ## Configuration
 
-This mod has no settings.
+The settings are in `BepInEx/config/javidahmed64592.nosliponroof.cfg`.
+The only one, `DisabledFeatures` under `[Debug]`, is for testing: it turns parts of the mod off by name. Leave it empty to play normally.
 
 ## Compatibility
 
 - Other mods that change sliding or how the player moves on slopes may conflict with this mod.
+- If a game update breaks part of the mod, that part turns off on its own and the log says which one; the rest keeps working.
 - This mod has not been tested with a gamepad, only with keyboard and mouse.
 
 ## Uninstalling

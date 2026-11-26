@@ -4,6 +4,8 @@ using HarmonyLib;
 
 using Jotunn.Utils;
 
+using NoSlipOnRoof.Core;
+
 namespace NoSlipOnRoof;
 
 [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
@@ -20,7 +22,7 @@ public class NoSlipOnRoofPlugin : BaseUnityPlugin
     private void Awake()
     {
         _harmony = new Harmony(PluginGUID);
-        _harmony.PatchAll();
+        _ = SafePatcher.PatchAll(_harmony, Config, Logger);
     }
 
     private void OnDestroy()

@@ -1,5 +1,6 @@
 using HarmonyLib;
 
+using NoSlipOnRoof.Core;
 using NoSlipOnRoof.Roofs;
 
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace NoSlipOnRoof.Patches;
 /// friction, so movement feels the same.
 /// </summary>
 [HarmonyPatch(typeof(Character), "UpdateBodyFriction")]
+[Feature(StandStill.Feature)]
 internal static class Character_UpdateBodyFriction_Patch
 {
     /// <summary>Holds slopes up to about 80 degrees, steeper than any vanilla roof.</summary>
