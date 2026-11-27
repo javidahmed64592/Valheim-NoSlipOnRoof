@@ -1,5 +1,6 @@
 using HarmonyLib;
 
+using NoSlipOnRoof.Core;
 using NoSlipOnRoof.Roofs;
 
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace NoSlipOnRoof.Patches;
 /// in world space, and pinning the horizontal position is enough because the roof surface fixes the height.
 /// </summary>
 [HarmonyPatch(typeof(Character), "ApplyGroundForce")]
+[Feature(StandStill.Feature)]
 internal static class Character_ApplyGroundForce_Patch
 {
     /// <summary>Vanilla's values for standing still on a ship: below this target speed counts as idle.</summary>
